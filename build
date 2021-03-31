@@ -1,0 +1,16 @@
+#!/bin/bash
+# Input: .c file
+# Output: compile, run and delete bin
+BIN_NAME=pong
+SOURCE_NAME=pong.c
+
+if [ -e $BIN_NAME ]; then
+    echo $BIN_NAME exists, bailing out because I dont know what to do
+    exit 1
+fi
+
+clear
+gcc $SOURCE_NAME -Wconversion -lncurses -o $BIN_NAME
+if [ $? = 0 ]; then
+    ./$BIN_NAME && echo $? && rm ./$BIN_NAME || rm ./$BIN_NAME
+fi
